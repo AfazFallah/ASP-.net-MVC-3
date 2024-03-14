@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ASP.net_MVC_3.Models.T_Students>
+
+@{
+    ViewBag.Title = "کاربران";
+    int count = 100;
+}
+
+<h2>لیست دانشجویان</h2>
+
+<table class="table">
+    <tr>
+        <th>ردیف</th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.family)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.registerDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @count
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.family)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.registerDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.id }) |
+                @Html.ActionLink("جزییات", "Details", new { id = item.id }) |
+                @Html.ActionLink("حذف", "Delete", new { id = item.id })
+            </td>
+        </tr>
+        count++;
+    }
+        
+</table>
+<p>
+    @Html.ActionLink("اضاقه کردن دانشجوی جدید", "Create")
+</p>
