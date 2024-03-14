@@ -15,5 +15,17 @@ namespace ASP.net_MVC_3.Controllers
            var students = db.T_Students;
             return View(students);
         }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(T_Students students)
+        {
+            db.SaveChanges();
+            return View();
+        }
+
     }
 }

@@ -7,28 +7,31 @@ namespace ASP.net_MVC_3.Models
 
     public partial class T_Students
     {
-        [Display(Name = "????")]
+        [Display(Name = "آیدی")]
         public int id { get; set; }
 
-        [Display(Name ="???")]
+        [Display(Name = "نام")]
         public string name { get; set; }
 
-        [Display(Name = "??? ????????")]
+        [Display(Name = "نام خانوادگی")]
         public string family { get; set; }
 
-        [Display(Name = "??")]
+        [Display(Name = "سن")]
         public int age { get; set; }
 
-        [Display(Name = "??????")]
+        [Display(Name = "موبایل")]
         public string phone { get; set; }
 
-        [Display(Name = "?????")]
+        [Display(Name = "ایمیل")]
         public string email { get; set; }
 
-        [Display(Name = "????? ??? ???")]
+        [Display(Name = "تاریخ عضویت")]
         public System.DateTime registerDate { get; set; }
 
-        [Display(Name = "?????")]
+        [Display(Name = "وضعیت")]
         public bool IsActive { get; set; }
+
+        [Display(Name = "جنسیت")]
+        public Nullable<bool> gender { get; set; }
     }
 }
