@@ -13,10 +13,10 @@ namespace ASP.net_MVC_3.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class db_WebTestEntities : DbContext
+    public partial class db_WebTestEntities1 : DbContext
     {
-        public db_WebTestEntities()
-            : base("name=db_WebTestEntities")
+        public db_WebTestEntities1()
+            : base("name=db_WebTestEntities1")
         {
         }
     
