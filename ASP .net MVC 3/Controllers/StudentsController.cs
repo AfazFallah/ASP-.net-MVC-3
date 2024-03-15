@@ -21,10 +21,17 @@ namespace ASP.net_MVC_3.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create(T_Students students)
+        public ActionResult Create([Bind(Include = "name , family , age , phone , email , gender")]T_Students students)
         {
-            db.SaveChanges();
-            return View();
+         if (ModelState.IsValid)
+            {
+                students.IsActive = true;
+                students.registerDate = DateTime.Now;
+                db.T_Students.Add(students);
+                db.SaveChanges();
+                return Redirect("Index");
+            }
+         else { return View(); }
         }
 
     }
