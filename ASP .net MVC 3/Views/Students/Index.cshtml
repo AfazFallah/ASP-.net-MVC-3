@@ -24,13 +24,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.registerDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gender)
-        </th>
+        </th>>
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
@@ -59,24 +53,25 @@
                 @Html.DisplayFor(modelItem => item.email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.registerDate)
+                @if (item.IsActive == true)
+                {
+                    <span style="color : green">فعال</span>
+                }
+                else
+                {
+                    <span style="color : red">مسدود</span>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                @Html.ActionLink("ویرایش", "Edit", new { id = item.id }) |
-                @Html.ActionLink("جزییات", "Details", new { id = item.id }) |
-                @Html.ActionLink("حذف", "Delete", new { id = item.id })
+                @Html.ActionLink("ویرایش", "Edit", new { id = item.id }, new { @class = "btn btn-warning" }) |
+                @Html.ActionLink("جزییات", "Details", new { id = item.id }, new { @class = "btn btn-info" }) |
+                @Html.ActionLink("حذف", "Delete", new { id = item.id }, new { @class = "btn btn-danger" })
             </td>
         </tr>
         count++;
     }
-        
+
 </table>
 <p>
-    @Html.ActionLink("اضافه کردن دانشجوی جدید", "Create")
+    @Html.ActionLink("اضافه کردن دانشجوی جدید", "Create", new { @class = "btn btn-success" })
 </p>
