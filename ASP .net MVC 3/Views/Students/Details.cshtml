@@ -1,0 +1,123 @@
+﻿@model ASP.net_MVC_3.Models.T_Students
+
+@{
+    string name = Model.Name + " " + Model.Family;
+    ViewBag.Title = "جزییات کاربر" + name;
+    string ImageDefult = "user.png";
+}
+
+<div class="jumbotron">
+    <h2 class="text-center">جزییات @name</h2>
+</div>
+<div>
+    <dl class="dl-horizontal">
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.Family)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.Family)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.RegisterDate)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.RegisterDate)
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd class="form-control">
+            @if (Model.IsActive == true)
+            {
+                <span style="color : green">فعال</span>
+            }
+            else
+            {
+                <span style="color : red">مسدود</span>
+            }
+        </dd>
+
+        <dt class="form-label">
+
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+
+        <dd class="form-control">
+            @if (Model.Gender == true)
+            {
+                <span>مرد</span>
+            }
+            else
+            {
+                <span>زن</span>
+            }
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @if (Model.Image != ImageDefult)
+            {
+                ImageDefult = Model.Image;
+                <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
+            }
+            else
+            {
+                <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
+            }
+
+        </dd>
+
+        <dt class="form-label">
+            @Html.DisplayNameFor(model => model.NationalCode)
+        </dt>
+
+        <dd class="form-control">
+            @Html.DisplayFor(model => model.NationalCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("بازگشت به لیست دانشجویان", "Index", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+</p>

@@ -28,7 +28,6 @@
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
-        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -81,6 +80,6 @@
     }
 
 </table>
-<p>
-    @Html.ActionLink("اضافه کردن دانشجوی جدید", "Create", new { @class = "btn btn-success" })
+<p class="btn " >
+    @Html.ActionLink("اضافه کردن دانشجوی جدید", "Create", null , new { @class = "btn btn-success" })
 </p>
