@@ -9,9 +9,10 @@
 <div class="jumbotron">
     <h2 class="text-center">اطلاعات @name</h2>
 </div>
-<div class="form-row">
 
-    <!-- #region name -->
+<!-- #region name & family -->
+
+<div class="form-row">
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Name)
@@ -20,8 +21,6 @@
             @Html.DisplayFor(model => model.Name)
         </div>
     </div>
-    <!-- #endregion -->
-    <!-- #region family -->
 
     <div class="col">
         <div class="form-label">
@@ -31,14 +30,13 @@
             @Html.DisplayFor(model => model.Family)
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
+
+<!-- #endregion -->
+<!-- #region age & phone -->
+
 <div class="form-row">
-
-    <!-- #region age -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Age)
@@ -47,10 +45,6 @@
             @Html.DisplayFor(model => model.Age)
         </div>
     </div>
-
-    <!-- #endregion -->
-    <!-- #region phone -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Phone)
@@ -59,14 +53,13 @@
             @Html.DisplayFor(model => model.Phone)
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
+
+<!-- #endregion -->
+<!-- #region emai; & registerdate -->
+
 <div class="form-row">
-
-    <!-- #region email -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Email)
@@ -75,10 +68,6 @@
             @Html.DisplayFor(model => model.Email)
         </div>
     </div>
-
-    <!-- #endregion -->
-    <!-- #region registerDate -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.RegisterDate)
@@ -87,14 +76,13 @@
             @Html.DisplayFor(model => model.RegisterDate)
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
+
+<!-- #endregion -->
+<!-- #region isActive & gender -->
+
 <div class="form-row">
-
-    <!-- #region isActive -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.IsActive)
@@ -110,10 +98,6 @@
             }
         </div>
     </div>
-
-    <!-- #endregion -->
-    <!-- #region gender -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Gender)
@@ -129,14 +113,13 @@
             }
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
+
+<!-- #endregion -->
+<!-- #region image & nationalCode -->
+
 <div class="form-row">
-
-    <!-- #region image -->
-
     <div class="col">
         <div>
             @Html.DisplayNameFor(model => model.Image)
@@ -153,10 +136,6 @@
             }
         </div>
     </div>
-
-    <!-- #endregion -->
-    <!-- #region nationalCode -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.NationalCode)
@@ -166,11 +145,11 @@
 
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
-    <!-- #region submit -->
+
+<!-- #endregion -->
+<!-- #region submit -->
 <div class="form-group" style="float : left !important; margin-top: 15px !important; margin-bottom: 15px !important;">
     @Html.ActionLink("بازگشت به لیست دانشجویان", "Index", null, new { @class = "btn btn-primary" })
     @Html.ActionLink("ویرایش اطلاعات" + " " + name, "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
