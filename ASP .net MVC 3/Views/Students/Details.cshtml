@@ -2,122 +2,180 @@
 
 @{
     string name = Model.Name + " " + Model.Family;
-    ViewBag.Title = "جزییات کاربر" + name;
+    ViewBag.Title = "اطلاعات کاربر" + name;
     string ImageDefult = "user.png";
 }
 
-<div class="jumbotron">
-    <h2 class="text-center">جزییات @name</h2>
-</div>
-<div>
-    <dl class="dl-horizontal">
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="jumbotron">
+        <h2 class="text-center">اطلاعات @name</h2>
+    </div>
+    <div class="form-row">
 
-        <dd class="form-control">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+        <!-- #region name -->
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.Name)
+            </div>
+            <div class="form-control">
+                @Html.DisplayFor(model => model.Name)
+            </div>
+        </div>
+        <!-- #endregion -->
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.Family)
-        </dt>
+        <!-- #region family -->
 
-        <dd class="form-control">
-            @Html.DisplayFor(model => model.Family)
-        </dd>
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.Family)
+            </div>
+            <div class="form-control">
+                @Html.DisplayFor(model => model.Family)
+            </div>
+        </div>
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.Age)
-        </dt>
+        <!-- #endregion -->
+    </div>
+    <br />
+    <div class="form-row">
 
-        <dd class="form-control">
-            @Html.DisplayFor(model => model.Age)
-        </dd>
+        <!-- #region age -->
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.Age)
+            </div>
+            <div class="form-control">
+                @Html.DisplayFor(model => model.Age)
+            </div>
+        </div>
 
-        <dd class="form-control">
-            @Html.DisplayFor(model => model.Phone)
-        </dd>
+        <!-- #endregion -->
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+        <!-- #region phone -->
 
-        <dd class="form-control">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.Phone)
+            </div>
+            <div class="form-control">
+                @Html.DisplayFor(model => model.Phone)
+            </div>
+        </div>
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.RegisterDate)
-        </dt>
+        <!-- #endregion -->
+    </div>
+    <br />
+    <div class="form-row">
 
-        <dd class="form-control">
-            @Html.DisplayFor(model => model.RegisterDate)
-        </dd>
+        <!-- #region email -->
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.IsActive)
-        </dt>
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
+            <div class="form-control">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+        </div>
 
-        <dd class="form-control">
-            @if (Model.IsActive == true)
-            {
-                <span style="color : green">فعال</span>
-            }
-            else
-            {
-                <span style="color : red">مسدود</span>
-            }
-        </dd>
+        <!-- #endregion -->
 
-        <dt class="form-label">
+        <!-- #region registerDate -->
 
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.RegisterDate)
+            </div>
+            <div class="form-control">
+                @Html.DisplayFor(model => model.RegisterDate)
+            </div>
+        </div>
 
-        <dd class="form-control">
-            @if (Model.Gender == true)
-            {
-                <span>مرد</span>
-            }
-            else
-            {
-                <span>زن</span>
-            }
-        </dd>
+        <!-- #endregion -->
+    </div>
+    <br />
+    <div class="form-row">
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+        <!-- #region isActive -->
 
-        <dd>
-            @if (Model.Image != ImageDefult)
-            {
-                ImageDefult = Model.Image;
-                <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
-            }
-            else
-            {
-                <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
-            }
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </div>
+            <div class="form-control">
+                @if (Model.IsActive == true)
+                {
+                    <span style="color : green">فعال</span>
+                }
+                else
+                {
+                    <span style="color : red">مسدود</span>
+                }
+            </div>
+        </div>
 
-        </dd>
+        <!-- #endregion -->
 
-        <dt class="form-label">
-            @Html.DisplayNameFor(model => model.NationalCode)
-        </dt>
+        <!-- #region gender -->
 
-        <dd class="form-control">
-            @Html.DisplayFor(model => model.NationalCode)
-        </dd>
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.Gender)
+            </div>
+            <div class="form-control">
+                @if (Model.Gender == true)
+                {
+                    <span>مرد</span>
+                }
+                else
+                {
+                    <span>زن</span>
+                }
+            </div>
+        </div>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("بازگشت به لیست دانشجویان", "Index", null, new { @class = "btn btn-primary" })
-    @Html.ActionLink("ویرایش", "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
-</p>
+        <!-- #endregion -->
+    </div>
+    <br />
+    <div class="form-row">
+
+        <!-- #region image -->
+
+        <div class="col">
+            <div >
+                @Html.DisplayNameFor(model => model.Image)
+            </div>
+            <div>
+                @if (Model.Image != ImageDefult)
+                {
+                    ImageDefult = Model.Image;
+                    <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
+                }
+                else
+                {
+                    <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
+                }
+            </div>
+        </div>
+
+        <!-- #endregion -->
+
+        <!-- #region nationalCode -->
+
+        <div class="col">
+            <div class="form-label">
+                @Html.DisplayNameFor(model => model.NationalCode)
+            </div>
+            <div class="form-control">
+                @Html.DisplayFor(model => model.NationalCode)
+
+            </div>
+        </div>
+
+        <!-- #endregion -->
+    </div>
+    <br />
+     <div class="form-group" style="float : left !important; margin-top: 15px !important; margin-bottom: 15px !important;">
+         @Html.ActionLink("بازگشت به لیست دانشجویان", "Index", null, new { @class = "btn btn-primary" })
+         @Html.ActionLink("ویرایش اطلاعات" + " " + name, "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
+     </div>

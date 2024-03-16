@@ -15,13 +15,15 @@ namespace ASP.net_MVC_3.Models
         #region Anno
         [Display(Name = "نام")]
         [Required(ErrorMessage = " فیلد {0} نمیتواند خالی باشد")]
-        [StringLength(20, MinimumLength = 2, ErrorMessage = "لطفا {0} را به صورت صحیح وارد کنید (حداقل 2 و حداکثر 20 کاراکتر)")] 
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "لطفا {0} را به صورت صحیح وارد کنید (حداقل 2 و حداکثر 20 کاراکتر)")]
+        [RegularExpression("^[آ-ی ]+$",ErrorMessage ="فقط کاراکتر های فارسی مورد تایید است!")]
         #endregion
         public string Name { get; set; }
         #region Anno
         [Display(Name = "نام خانوادگی")]
         [Required(ErrorMessage = " فیلد {0} نمیتواند خالی باشد")]
-        [StringLength(20, MinimumLength = 2, ErrorMessage = "لطفا {0} را به صورت صحیح وارد کنید (حداقل 2 و حداکثر 20 کاراکتر)")] 
+        [StringLength(20, MinimumLength = 2, ErrorMessage = "لطفا {0} را به صورت صحیح وارد کنید (حداقل 2 و حداکثر 20 کاراکتر)")]
+        [RegularExpression("^[آ-ی ]+$", ErrorMessage = "فقط کاراکتر های فارسی مورد تایید است!")]
         #endregion
         public string Family { get; set; }
         #region Anno
@@ -42,7 +44,8 @@ namespace ASP.net_MVC_3.Models
         public string Email { get; set; }
         #region Anno
         [Display(Name = "تاریخ عضویت")]
-        [Required(ErrorMessage = " فیلد {0} نمیتواند خالی باشد")] 
+        [Required(ErrorMessage = " فیلد {0} نمیتواند خالی باشد")]
+        [DisplayFormat(DataFormatString ="{0: dddd, dd MMMM yyyy}")]
         #endregion
         public System.DateTime RegisterDate { get; set; }
         #region Anno
