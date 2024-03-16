@@ -9,7 +9,7 @@
     <h3>ویرایش @name</h3>
 </div>
 
-@using (Html.BeginForm("Edit", "Students", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit","Students", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -19,6 +19,7 @@
     @Html.HiddenFor(model => model.Image)
 
 
+    #region name & family
     <div class="form-row">
 
         <div class="col">
@@ -39,6 +40,9 @@
     </div>
     <br />
 
+    #endregion
+
+    #region age & phone
     <div class="form-row">
 
         <div class="col">
@@ -56,9 +60,13 @@
             @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
         </div>
+
     </div>
     <br />
 
+    #endregion
+
+    #region nationalCode & email
     <div class="form-row">
 
         <div class="col">
@@ -79,6 +87,9 @@
     </div>
     <br />
 
+    #endregion
+
+    #region gender & isActive
     <div class="form-row">
 
         <div class="col">
@@ -121,6 +132,9 @@
     </div>
     <br />
 
+    #endregion
+
+    #region image & changeImage
     <div class="form-row">
 
         <div class="col">
@@ -143,13 +157,13 @@
     </div>
     <br />
 
+    #endregion
 
-    <div class="form-group" style="float:left !important; margin-top:30px !important; margin-bottom:20px !important">
-        @Html.ActionLink("بازگشت به لیست", "Index", null, new { @class = "btn btn-primary" }) |
-        <input type="submit" value="ذخیره تغییرات" class="btn btn-warning" />
-    </div>
+
+<div class="form-group" style="float:left !important; margin-top:30px !important; margin-bottom:20px !important">
+    @Html.ActionLink("بازگشت به لیست", "Index", null, new { @class = "btn btn-primary" }) |
+    <input type="submit" value="ذخیره تغییرات" class="btn btn-warning" />
+</div>
 }
 
-<script src="~/Scripts/jquery-3.0.0.min.js"></script>
-<script src="~/Scripts/jquery.validate.min.js"></script>
-<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

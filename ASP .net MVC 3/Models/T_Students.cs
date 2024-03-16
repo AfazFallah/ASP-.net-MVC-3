@@ -4,6 +4,8 @@ namespace ASP.net_MVC_3.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Runtime.InteropServices;
+    using System.Runtime.Serialization;
 
     public partial class T_Students
     {
@@ -34,7 +36,8 @@ namespace ASP.net_MVC_3.Models
         #region Anno
         [Display(Name = "موبایل")]
         [Required(ErrorMessage = " فیلد {0} نمیتواند خالی باشد")]
-        [RegularExpression("(09)[0-9]{9}", ErrorMessage = "لطفا {0} را به صورت صحیح وارد کنید")] 
+        //[RegularExpression("(09)[0-9]{9}", ErrorMessage = "فرمت {0} شما صحیح نیست!")]
+        [Phone]
         #endregion
         public string Phone { get; set; }
         #region Anno
@@ -60,7 +63,8 @@ namespace ASP.net_MVC_3.Models
         #endregion
         public Nullable<bool> Gender { get; set; }
         #region Anno
-        [Display(Name = "تصویر")] 
+        [Display(Name = "تصویر")]
+        
         #endregion
         public string Image { get; set; }
         #region Anno

@@ -6,6 +6,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+using System.Web.Helpers;
+using System.Data.Entity;
+using System.Security.Policy;
+using System.Web.UI;
+using System.Xml.Linq;
 
 namespace ASP.net_MVC_3.Controllers
 {
@@ -33,11 +38,11 @@ namespace ASP.net_MVC_3.Controllers
 
         #region CreatePost
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Name , Family , NationalCode , Age , Phone , Password , Email , Gender , Image")] T_Students students, HttpPostedFileBase Image , string repassword)
+        public ActionResult Create([Bind(Include = "Name , Family , NationalCode , Age , Phone , Password , Email , Gender , Image")] T_Students students, HttpPostedFileBase Image, string repassword)
         {
             if (ModelState.IsValid)
             {
-                if (students.Password!= repassword) 
+                if (students.Password != repassword)
                 {
                     ModelState.AddModelError("Password", "رمز عبور با تکرار آن مطابقت ندارد");
                     return View(students);
@@ -59,9 +64,6 @@ namespace ASP.net_MVC_3.Controllers
                     newImage = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(Image.FileName);
                     Image.SaveAs(Server.MapPath("/Image/ProfileName/" + newImage));
                 }
-
-
-
                 students.Image = newImage;
                 students.IsActive = true;
                 students.RegisterDate = DateTime.Now;
@@ -108,6 +110,36 @@ namespace ASP.net_MVC_3.Controllers
             return View(student);
         }
 
+        #endregion
+
+        #region EditPost
+        [HttpPost]
+        public ActionResult Edit([Bind(Include ="Id, Name, Family, Age, Phone, Email, RegisterDate, IsActive, Gender, Image, Password, NationalCode")]T_Students students, HttpPostedFileBase imageUpload = null)
+        {
+            if (ModelState.IsValid)
+            {
+                if (imageUpload != null)
+                {
+                    if (imageUpload.ContentType != "image/jpeg" && imageUpload.ContentType != "image/png" && imageUpload.ContentType != "image/jpg")
+                    {
+                        ModelState.AddModelError("Image", "تصویر شما باید با فرمت jpeg  یا png یا jpg باشد!");
+                        return View(students);
+                    }
+                    if (imageUpload.ContentLength > 300000)
+                    {
+                        ModelState.AddModelError("Image", "حجم تصویر شما نباید بیشتر از 300 کیلوبایت باشد!");
+                        return View(students);
+                    }
+                    string newImage = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(imageUpload.FileName);
+                    imageUpload.SaveAs(Server.MapPath("/Image/ProfileName/" + newImage));
+                    students.Image = newImage;
+                }
+                db.Entry(students).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(students);
+        }
         #endregion
     }
 }

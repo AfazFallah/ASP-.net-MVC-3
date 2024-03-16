@@ -5,7 +5,9 @@
     int count = 100;
 }
 
-    <h2>لیست دانشجویان</h2>
+    <div class="jumbotron">
+        <h2 class="text-center">لیست دانشجویان</h2>
+    </div>
 
     <table class="table">
         <!-- #region tr th -->
@@ -26,7 +28,7 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Email)
-            </th>>
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.IsActive)
             </th>
