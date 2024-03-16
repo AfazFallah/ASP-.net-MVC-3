@@ -9,7 +9,7 @@
     <h3>ویرایش @name</h3>
 </div>
 
-@using (Html.BeginForm("Edit","Students", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Edit", "Students", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -67,6 +67,7 @@
     #endregion
 
     #region nationalCode & email
+
     <div class="form-row">
 
         <div class="col">
@@ -141,7 +142,7 @@
             <div class="form-label">
                 @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label" })
             </div>
-            <img src="~/images/@Model.Image" style="width:120px; height:120px" />
+            <img src="~/Image/ProfileName/@Model.Image" style="width:100px; height:100px;" />
             @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
         </div>
 
@@ -159,11 +160,13 @@
 
     #endregion
 
-
-<div class="form-group" style="float:left !important; margin-top:30px !important; margin-bottom:20px !important">
-    @Html.ActionLink("بازگشت به لیست", "Index", null, new { @class = "btn btn-primary" }) |
-    <input type="submit" value="ذخیره تغییرات" class="btn btn-warning" />
-</div>
+    #region submit
+		
+    <div class="form-group" style="float:left !important; margin-top:30px !important; margin-bottom:20px !important">
+        @Html.ActionLink("بازگشت به لیست", "Index", null, new { @class = "btn btn-primary" }) |
+        <input type="submit" value="ذخیره تغییرات" class="btn btn-warning" />
+    </div> 
+	#endregion
 }
 
 

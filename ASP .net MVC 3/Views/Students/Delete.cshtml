@@ -2,16 +2,16 @@
 
 @{
     string name = Model.Name + " " + Model.Family;
-    ViewBag.Title = "اطلاعات کاربر" + name;
-    string ImageDefult = "user.png";
+    ViewBag.Title = "حذف" + " " + name;
 }
 
-<div class="jumbotron">
-    <h2 class="text-center">اطلاعات @name</h2>
+<div class="jumbotron text-center">
+    <h3>حذف @name</h3>
 </div>
+
+<!-- #region name & family -->
 <div class="form-row">
 
-    <!-- #region name -->
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Name)
@@ -20,8 +20,6 @@
             @Html.DisplayFor(model => model.Name)
         </div>
     </div>
-    <!-- #endregion -->
-    <!-- #region family -->
 
     <div class="col">
         <div class="form-label">
@@ -31,13 +29,11 @@
             @Html.DisplayFor(model => model.Family)
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
+<!-- #endregion -->
+<!-- #region age & phone -->
 <div class="form-row">
-
-    <!-- #region age -->
 
     <div class="col">
         <div class="form-label">
@@ -48,9 +44,6 @@
         </div>
     </div>
 
-    <!-- #endregion -->
-    <!-- #region phone -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Phone)
@@ -59,14 +52,11 @@
             @Html.DisplayFor(model => model.Phone)
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
+<!-- #endregion -->
+<!-- #region email & registerDate -->
 <div class="form-row">
-
-    <!-- #region email -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.Email)
@@ -76,9 +66,6 @@
         </div>
     </div>
 
-    <!-- #endregion -->
-    <!-- #region registerDate -->
-
     <div class="col">
         <div class="form-label">
             @Html.DisplayNameFor(model => model.RegisterDate)
@@ -87,13 +74,12 @@
             @Html.DisplayFor(model => model.RegisterDate)
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
-<div class="form-row">
+<!-- #endregion -->
+<!-- #region isActive & Gender -->
 
-    <!-- #region isActive -->
+<div class="form-row">
 
     <div class="col">
         <div class="form-label">
@@ -102,17 +88,14 @@
         <div class="form-control">
             @if (Model.IsActive == true)
             {
-                <span style="color : green">فعال</span>
+                <span style="color:green">فعال</span>
             }
             else
             {
-                <span style="color : red">مسدود</span>
+                <span style="color:red">غیر فعال</span>
             }
         </div>
     </div>
-
-    <!-- #endregion -->
-    <!-- #region gender -->
 
     <div class="col">
         <div class="form-label">
@@ -129,33 +112,19 @@
             }
         </div>
     </div>
-
-    <!-- #endregion -->
 </div>
 <br />
+<!-- #endregion -->
+<!-- #region image & nationalCode -->
+
 <div class="form-row">
 
-    <!-- #region image -->
-
     <div class="col">
-        <div>
+        <div class="form-label">
             @Html.DisplayNameFor(model => model.Image)
         </div>
-        <div>
-            @if (Model.Image != ImageDefult)
-            {
-                ImageDefult = Model.Image;
-                <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
-            }
-            else
-            {
-                <img src="~/Image/ProfileName/@ImageDefult" style="width:100px; height:100px;" />
-            }
-        </div>
+        <img src="~/Image/ProfileName/@Model.Image" style="width:120px; height:120px" />
     </div>
-
-    <!-- #endregion -->
-    <!-- #region nationalCode -->
 
     <div class="col">
         <div class="form-label">
@@ -163,16 +132,20 @@
         </div>
         <div class="form-control">
             @Html.DisplayFor(model => model.NationalCode)
-
         </div>
     </div>
+</div>
 
-    <!-- #endregion -->
-</div>
-<br />
-    <!-- #region submit -->
-<div class="form-group" style="float : left !important; margin-top: 15px !important; margin-bottom: 15px !important;">
-    @Html.ActionLink("بازگشت به لیست دانشجویان", "Index", null, new { @class = "btn btn-primary" })
-    @Html.ActionLink("ویرایش اطلاعات" + " " + name, "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
-</div>
 <!-- #endregion -->
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+#region submite
+		    <div class="form-actions" style="float: left !important; margin-top: 15px !important; margin-bottom: 15px !important; ">
+        @Html.ActionLink("بازگشت به لیست", "Index", null, new { @class = "btn btn-primary" }) |
+        <input type="submit" value="حذف @name" class="btn btn-danger" />
+    </div> 
+	#endregion
+}

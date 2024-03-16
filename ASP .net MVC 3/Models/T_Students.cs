@@ -35,7 +35,7 @@ namespace ASP.net_MVC_3.Models
         public int Age { get; set; }
         #region Anno
         [Display(Name = "موبایل")]
-        [Required(ErrorMessage = " فیلد {0} نمیتواند خالی باشد")]
+        [Required(ErrorMessage = "فیلد {0} نمیتواند خالی باشد")]
         //[RegularExpression("(09)[0-9]{9}", ErrorMessage = "فرمت {0} شما صحیح نیست!")]
         [Phone]
         #endregion
@@ -76,7 +76,8 @@ namespace ASP.net_MVC_3.Models
         public string Password { get; set; }
         #region Anno
         [Display(Name = "کد ملی")]
-        [RegularExpression("[0-9]{10}", ErrorMessage = "لطفا {0} را به صورت صحیح وارد کنید")] 
+        [Required(ErrorMessage = " فیلد {0} نمیتواند خالی باشد")]
+        [StringLength(10, ErrorMessage = "لطفا {0} را به صورت صحیح وارد کنید")]
         #endregion
         public string NationalCode { get; set; }
     }

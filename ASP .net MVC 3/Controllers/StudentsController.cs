@@ -28,16 +28,15 @@ namespace ASP.net_MVC_3.Controllers
         }
         #endregion
 
-        #region CreateGet
+        #region Create
         [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
-        #endregion
 
-        #region CreatePost
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Name , Family , NationalCode , Age , Phone , Password , Email , Gender , Image")] T_Students students, HttpPostedFileBase Image, string repassword)
         {
             if (ModelState.IsValid)
@@ -75,7 +74,7 @@ namespace ASP.net_MVC_3.Controllers
         }
         #endregion
 
-        #region DetailsGet
+        #region Details
         [HttpGet]
         public ActionResult Details(int? id)
         {
@@ -93,7 +92,7 @@ namespace ASP.net_MVC_3.Controllers
         }
         #endregion
 
-        #region EditGet
+        #region Edit
         [HttpGet]
         public ActionResult Edit(int? id)
         {
@@ -109,12 +108,9 @@ namespace ASP.net_MVC_3.Controllers
             }
             return View(student);
         }
-
-        #endregion
-
-        #region EditPost
         [HttpPost]
-        public ActionResult Edit([Bind(Include ="Id, Name, Family, Age, Phone, Email, RegisterDate, IsActive, Gender, Image, Password, NationalCode")]T_Students students, HttpPostedFileBase imageUpload = null)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id, Name, Family, Age, Phone, Email, RegisterDate, IsActive, Gender, Image, Password, NationalCode")] T_Students students, HttpPostedFileBase imageUpload)
         {
             if (ModelState.IsValid)
             {
@@ -140,6 +136,65 @@ namespace ASP.net_MVC_3.Controllers
             }
             return View(students);
         }
+        #endregion
+
+        #region Delete
+        [HttpGet]
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var student = db.T_Students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            return View(student);
+        }
+
+        [HttpPost,ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteStudent(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var student = db.T_Students.Find(id);
+            if (student == null)
+            {
+                return HttpNotFound();
+            }
+            if (student != null) 
+            {
+                db.T_Students.Remove(student);
+                db.SaveChanges();
+                if (student.Image != "user")
+                {
+                    if (System.IO.File.Exists(Server.MapPath("/Image/ProfileName/") + student.Image))
+                    {
+                        System.IO.File.Delete(Server.MapPath("/Image/ProfileName/") + student.Image);
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            return View(student);
+        }
+        #endregion
+
+        #region Dispose
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        } 
         #endregion
     }
 }
