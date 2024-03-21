@@ -9,7 +9,6 @@
     <h3>حذف @name</h3>
 </div>
 
-<!-- #region name & family -->
 <div class="form-row">
 
     <div class="col">
@@ -31,8 +30,7 @@
     </div>
 </div>
 <br />
-<!-- #endregion -->
-<!-- #region age & phone -->
+
 <div class="form-row">
 
     <div class="col">
@@ -54,8 +52,7 @@
     </div>
 </div>
 <br />
-<!-- #endregion -->
-<!-- #region email & registerDate -->
+
 <div class="form-row">
     <div class="col">
         <div class="form-label">
@@ -76,8 +73,6 @@
     </div>
 </div>
 <br />
-<!-- #endregion -->
-<!-- #region isActive & Gender -->
 
 <div class="form-row">
 
@@ -114,8 +109,6 @@
     </div>
 </div>
 <br />
-<!-- #endregion -->
-<!-- #region image & nationalCode -->
 
 <div class="form-row">
 
@@ -136,16 +129,11 @@
     </div>
 </div>
 
-<!-- #endregion -->
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
-#region submite
 		    <div class="form-actions" style="float: left !important; margin-top: 15px !important; margin-bottom: 15px !important; ">
         @Html.ActionLink("بازگشت به لیست", "Index", null, new { @class = "btn btn-primary" }) |
         <input type="submit" value="حذف @name" class="btn btn-danger" />
     </div> 
-	#endregion
 }

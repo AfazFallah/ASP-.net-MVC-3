@@ -10,7 +10,6 @@
     </div>
 
     <table class="table">
-        <!-- #region tr th -->
 
         <tr>
             <th>ردیف</th>
@@ -33,9 +32,6 @@
                 @Html.DisplayNameFor(model => model.IsActive)
             </th>
         </tr>
-
-        <!-- #endregion -->
-        <!-- #region foreach tr td -->
 
         @foreach (var item in Model)
         {
@@ -85,8 +81,6 @@
             </tr>
             count++;
         }
-
-        <!-- #endregion -->
 
     </table>
     <div class="form-group" style="float : left !important; margin-top: 15px !important; margin-bottom: 15px !important;">

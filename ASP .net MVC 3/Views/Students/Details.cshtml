@@ -10,8 +10,6 @@
     <h2 class="text-center">اطلاعات @name</h2>
 </div>
 
-<!-- #region name & family -->
-
 <div class="form-row">
     <div class="col">
         <div class="form-label">
@@ -33,9 +31,6 @@
 </div>
 <br />
 
-<!-- #endregion -->
-<!-- #region age & phone -->
-
 <div class="form-row">
     <div class="col">
         <div class="form-label">
@@ -56,9 +51,6 @@
 </div>
 <br />
 
-<!-- #endregion -->
-<!-- #region emai; & registerdate -->
-
 <div class="form-row">
     <div class="col">
         <div class="form-label">
@@ -78,9 +70,6 @@
     </div>
 </div>
 <br />
-
-<!-- #endregion -->
-<!-- #region isActive & gender -->
 
 <div class="form-row">
     <div class="col">
@@ -116,9 +105,6 @@
 </div>
 <br />
 
-<!-- #endregion -->
-<!-- #region image & nationalCode -->
-
 <div class="form-row">
     <div class="col">
         <div>
@@ -148,10 +134,7 @@
 </div>
 <br />
 
-<!-- #endregion -->
-<!-- #region submit -->
 <div class="form-group" style="float : left !important; margin-top: 15px !important; margin-bottom: 15px !important;">
     @Html.ActionLink("بازگشت به لیست دانشجویان", "Index", null, new { @class = "btn btn-primary" })
     @Html.ActionLink("ویرایش اطلاعات" + " " + name, "Edit", new { id = Model.Id }, new { @class = "btn btn-warning" })
 </div>
-<!-- #endregion -->
